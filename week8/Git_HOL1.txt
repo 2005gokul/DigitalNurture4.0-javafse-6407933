@@ -1,0 +1,197 @@
+
+tgoku@GOKUL MINGW64 ~
+$ git --version
+git version 2.50.1.windows.1
+
+tgoku@GOKUL MINGW64 ~
+$ git config --global user.name "gokul"
+
+tgoku@GOKUL MINGW64 ~
+$ git config --global user.email "tgokul02005@gmail.com"
+
+tgoku@GOKUL MINGW64 ~
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+filter.lfs.required=true
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+user.name=gokul
+user.email=tgokul02005@gmail.com
+core.editor=notepad++ -multiInst -nosession
+
+tgoku@GOKUL MINGW64 ~
+$ notepad++
+tgoku@GOKUL MINGW64 ~
+$ mkdir GitDemo
+
+tgoku@GOKUL MINGW64 ~
+$ cd GitDemo
+
+tgoku@GOKUL MINGW64 ~/GitDemo
+$ git init
+Initialized empty Git repository in C:/Users/tgoku/GitDemo/.git/
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ echo "Welcome to Git Demo" > welcome.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ ls
+welcome.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ cat welcome.txt
+Welcome to Git Demo
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        welcome.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git add welcome.txt
+warning: in the working copy of 'welcome.txt', LF will be replaced by CRLF the next time Git touches it
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git commit
+[master (root-commit) 2cb196a] Add welcome.txt file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git remote add origin https://gitlab.com/tgokul02005/gitdemo.git
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git pull origin master
+fatal: couldn't find remote ref master
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 238 bytes | 238.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: To create a merge request for master, visit:
+remote:   https://gitlab.com/tgokul02005/gitdemo/-/merge_requests/new?merge_request%5Bsource_branch%5D=master
+remote:
+To https://gitlab.com/tgokul02005/gitdemo.git
+ * [new branch]      master -> master
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git pull origin master --allow-unrelated-histories
+From https://gitlab.com/tgokul02005/gitdemo
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git log --oneline
+2cb196a (HEAD -> master, origin/master) Add welcome.txt file
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ ^C
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ cd ..
+
+tgoku@GOKUL MINGW64 ~
+$ git clone https://gitlab.com/tgokul02005/gitdemo.git testclone
+fatal: destination path 'testclone' already exists and is not an empty directory.
+
+tgoku@GOKUL MINGW64 ~
+$ git clone https://gitlab.com/tgokul02005/gitdemo.git testclones
+Cloning into 'testclones'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (6/6), done.
+
+tgoku@GOKUL MINGW64 ~
+$ cd testclones
+
+tgoku@GOKUL MINGW64 ~/testclones (main)
+$ ls
+README.md
+
+tgoku@GOKUL MINGW64 ~/testclones (main)
+$ git push origin master:main
+error: src refspec master does not match any
+error: failed to push some refs to 'https://gitlab.com/tgokul02005/gitdemo.git'
+
+tgoku@GOKUL MINGW64 ~/testclones (main)
+$ ^C
+
+tgoku@GOKUL MINGW64 ~/testclones (main)
+$ cd ~/GitDemo
+
+tgoku@GOKUL MINGW64 ~/GitDemo (master)
+$ git branch -m master main
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git push -u origin main
+To https://gitlab.com/tgokul02005/gitdemo.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://gitlab.com/tgokul02005/gitdemo.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ ^C
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git pull origin main --allow-unrelated-histories
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 2.73 KiB | 147.00 KiB/s, done.
+From https://gitlab.com/tgokul02005/gitdemo
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+Merge made by the 'ort' strategy.
+ README.md | 93 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 93 insertions(+)
+ create mode 100644 README.md
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 342 bytes | 342.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/tgokul02005/gitdemo.git
+   3c78a39..77e4f9e  main -> main
+branch 'main' set up to track 'origin/main'.
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$

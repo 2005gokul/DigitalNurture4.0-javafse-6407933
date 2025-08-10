@@ -1,0 +1,80 @@
+tgoku@GOKUL MINGW64 ~
+$ cd ~/GitDemo
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ echo "This is a log file" > sample.log
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ mkdir log
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ echo "Log data" > log/log1.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        log/
+        sample.log
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ ^C
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ notepad++ .gitignore
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ ^C
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git add .gitignore
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git commit -m "Add .gitignore to ignore .log files and log folder"
+[main 46d4e42] Add .gitignore to ignore .log files and log folder
+ 1 file changed, 2 insertions(+)
+ create mode 100644 .gitignore
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ ^C
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 339 bytes | 339.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/tgokul02005/gitdemo.git
+   77e4f9e..46d4e42  main -> main
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ ^C
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$

@@ -1,0 +1,107 @@
+
+tgoku@GOKUL MINGW64 ~
+$ cd ~/GitDemo
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git branch GitNewBranch
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git branch -a
+  GitNewBranch
+* main
+  remotes/origin/main
+  remotes/origin/master
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+
+tgoku@GOKUL MINGW64 ~/GitDemo (GitNewBranch)
+$ echo "This is a new feature" > newfeature.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (GitNewBranch)
+$ git add newfeature.txt
+warning: in the working copy of 'newfeature.txt', LF will be replaced by CRLF the next time Git touches it
+
+tgoku@GOKUL MINGW64 ~/GitDemo (GitNewBranch)
+$ git commit -m "Add newfeature.txt in GitNewBranch"
+[GitNewBranch 6514ece] Add newfeature.txt in GitNewBranch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newfeature.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (GitNewBranch)
+$ git status
+On branch GitNewBranch
+nothing to commit, working tree clean
+
+tgoku@GOKUL MINGW64 ~/GitDemo (GitNewBranch)
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git diff GitNewBranch
+diff --git a/newfeature.txt b/newfeature.txt
+deleted file mode 100644
+index 48af23d..0000000
+--- a/newfeature.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-This is a new feature
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git config --global diff.tool p4merge
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git config --global difftool.p4merge.cmd
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git difftool GitNewBranch
+
+Viewing (1/1): 'newfeature.txt'
+Launch 'p4merge' [Y/n]? Y
+The diff tool p4merge is not available as 'p4merge'
+fatal: external diff died, stopping at newfeature.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git merge GitNewBranch
+Updating 46d4e42..6514ece
+Fast-forward
+ newfeature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newfeature.txt
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git log --oneline --graph --decorate
+* 6514ece (HEAD -> main, GitNewBranch) Add newfeature.txt in GitNewBranch
+* 46d4e42 (origin/main) Add .gitignore to ignore .log files and log folder
+*   77e4f9e Merge branch 'main' of https://gitlab.com/tgokul02005/gitdemo merge remote main into local main
+|\
+| * 3c78a39 Initial commit
+* 2cb196a (origin/master) Add welcome.txt file
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git branch -d GitNewBranch
+Deleted branch GitNewBranch (was 6514ece).
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$ git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 384 bytes | 192.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/tgokul02005/gitdemo.git
+   46d4e42..6514ece  main -> main
+
+tgoku@GOKUL MINGW64 ~/GitDemo (main)
+$
